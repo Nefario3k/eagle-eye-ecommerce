@@ -1,7 +1,8 @@
 <template>
   <v-app color="white">
-    <BarsApp @showCart="showCart" />
+    <BarsApp @showCart="showCart" @showNav="showNav" />
     <NavCart ref="cart" />
+    <NavMobile ref="mobileNav" />
     <v-main app>
       <Nuxt />
       <Footer />
@@ -29,6 +30,9 @@ export default {
   methods: {
     showCart() {
       this.$refs.cart.showUserCart();
+    },
+    showNav() {
+      this.$refs.mobileNav.showMobileNav();
     },
   },
 };

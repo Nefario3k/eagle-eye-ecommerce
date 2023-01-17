@@ -49,13 +49,13 @@
                   </v-list>
                 </v-menu>
               </li>
-              <li>
+              <li v-if="!activeInput">
                 <nuxt-link to="/deals"><span>Deals</span></nuxt-link>
               </li>
-              <li>
+              <li v-if="!activeInput">
                 <nuxt-link to="/new"><span>What's New</span></nuxt-link>
               </li>
-              <li>
+              <li v-if="!activeInput">
                 <nuxt-link to="/delivery"><span>Delivery</span></nuxt-link>
               </li>
             </ul>
@@ -68,7 +68,12 @@
             <ul>
               <li>
                 <div class="searchWrapper relative">
-                  <input type="text" />
+                  <input
+                    id="searchInputField"
+                    :class="{ activeInput: activeInput }"
+                    @click="increaseSearch"
+                    type="text"
+                  />
                   <div class="searchIcon absolute">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -189,12 +194,7 @@
                 </v-menu>
               </li>
               <li>
-                <div
-                  @click="$emit('showCart')"
-                  class="d-flex user_account"
-                  v-bind="attrs"
-                  v-on="on"
-                >
+                <div @click="$emit('showCart')" class="d-flex user_account">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
                     <path
                       d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z"
@@ -202,6 +202,12 @@
                   </svg>
                   <span>Cart</span>
                 </div>
+              </li>
+              <li class="hamburger">
+                <v-app-bar-nav-icon
+                  @click="$emit('showNav')"
+                  color="var(--secondary-color)"
+                ></v-app-bar-nav-icon>
               </li>
             </ul>
           </nav>
@@ -224,7 +230,23 @@ export default {
         { title: "Laptops" },
         { title: "Gaming" },
       ],
+      activeInput: false,
     };
+  },
+  methods: {
+    increaseSearch(e) {
+      this.activeInput = !this.activeInput;
+      // if (this.activeInput) {
+      //   window.addEventListener("click", (event) => {
+      //     if (event.target !== e.target) {
+      //       console.log(e);
+      //     }
+      //   });
+      // } else {
+      //   window.off();
+      // }
+      // console.log(e.target);
+    },
   },
 };
 </script>
@@ -314,5 +336,20 @@ nav ul li {
 .v-application--is-ltr .v-list-item__action:first-child,
 .v-application--is-ltr .v-list-item__icon:first-child {
   margin-right: 5px !important;
+}
+.activeInput {
+  width: 40vw;
+  animation: transwidth 0.8s ease-in-out;
+}
+@keyframes transwidth {
+  from {
+    width: 120px;
+  }
+  to {
+    width: 40vw;
+  }
+}
+.hamburger {
+  display: none;
 }
 </style>

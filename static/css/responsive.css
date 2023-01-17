@@ -1,0 +1,9 @@
+@media (max-width: 1199px) {
+    .leftNav .navPanel {
+        display: none;
+    }
+
+    .hamburger {
+        display: block !important;
+    }
+}
