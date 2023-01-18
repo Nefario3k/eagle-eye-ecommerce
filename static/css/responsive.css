@@ -1,9 +1,40 @@
 @media (max-width: 1199px) {
-    .leftNav .navPanel {
+
+    .leftNav .navPanel,
+    .accountMenu {
         display: none;
     }
 
     .hamburger {
         display: block !important;
+    }
+}
+
+@media (max-width: 959px) {
+    .navWrapper {
+        width: 100% !important;
+    }
+
+    li:has(.searchWrapper.desktop) {
+        display: none;
+    }
+
+    li:has(.mobile) {
+        display: block !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .itemList {
+        flex-direction: row !important;
+        margin-bottom: 20px !important;
+    }
+
+    .itemList::after {
+        display: none !important;
+    }
+
+    .logo .logoImg {
+        width: 70%;
     }
 }

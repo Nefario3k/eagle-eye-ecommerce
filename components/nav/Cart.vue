@@ -4,42 +4,45 @@
     v-model="drawer"
     temporary
     right
-    width="300"
+    :width="width"
     :clipped="false"
     class="navCart"
   >
-    <div class="closeNavBtn">
-      <h3>Cart(10)</h3>
-      <svg
-        @click="drawer = false"
-        width="35"
-        height="35"
-        viewBox="0 0 50 50"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <circle cx="25" cy="25" r="25" fill="var(--primary-color)" />
-        <path
-          d="M32.75 16.2498L16.25 32.7498"
-          stroke="#fff"
-          stroke-width="3"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-        <path
-          d="M16.25 16.2498L32.75 32.7498"
-          stroke="#fff"
-          stroke-width="3"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        />
-      </svg>
+    <div class="relative" style="margin-bottom: 55px">
+      <div class="closeNavBtn cartHeader">
+        <h3>Cart(10)</h3>
+        <svg
+          @click="drawer = false"
+          width="35"
+          height="35"
+          viewBox="0 0 50 50"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle cx="25" cy="25" r="25" fill="var(--primary-color)" />
+          <path
+            d="M32.75 16.2498L16.25 32.7498"
+            stroke="#fff"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+          <path
+            d="M16.25 16.2498L32.75 32.7498"
+            stroke="#fff"
+            stroke-width="3"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </div>
     </div>
     <v-list nav>
       <v-list-item v-for="n in 10" :key="n" class="itemList">
         <v-img
           :src="`/images/jpgs/item${n}.jpg`"
-          :height="195"
+          :height="imgHeight"
+          :width="imgWidth"
           class="product_img"
         ></v-img>
         <div class="itemContent">
@@ -64,12 +67,38 @@ export default {
     return {
       drawer: false,
       group: null,
+      width: 300,
+      imgHeight: 195,
+      imgWidth: null,
     };
   },
   methods: {
     showUserCart() {
       this.drawer = true;
     },
+  },
+  mounted() {
+    var nx = window.innerWidth;
+    if (nx <= 500) {
+      this.width = "100vw";
+      this.imgHeight = 100;
+      this.imgWidth = 100;
+    }
+    window.addEventListener("resize", function (event) {
+      var w = window.innerWidth;
+      nx = w;
+    });
+    $(window).resize(() => {
+      if (nx <= 500) {
+        this.width = "100vw";
+        this.imgHeight = 100;
+        this.imgWidth = 100;
+      } else {
+        this.width = 300;
+        this.imgHeight = 195;
+        this.imgWidth = null;
+      }
+    });
   },
 };
 </script>
@@ -101,6 +130,10 @@ export default {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      & > span:first-child {
+        word-break: break-all;
+        width: 80%;
+      }
     }
     div.quantity {
       display: flex;
