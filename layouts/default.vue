@@ -1,4 +1,5 @@
 <template>
+  <!-- <v-container> -->
   <v-app color="white">
     <BarsApp @showCart="showCart" @showNav="showNav" />
     <NavCart ref="cart" />
@@ -8,6 +9,7 @@
       <Footer />
     </v-main>
   </v-app>
+  <!-- </v-container> -->
 </template>
 
 <script>
