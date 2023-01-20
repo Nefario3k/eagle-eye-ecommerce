@@ -124,6 +124,14 @@
                       </div>
                     </template>
                     <v-list class="nav_dropDown_list" :elevation="0">
+                      <!-- sign-in  -->
+                      <nuxt-link to="/login">
+                        <v-list-item class="signList">
+                          <v-list-item-title class="item_title"
+                            >Sign in</v-list-item-title
+                          >
+                        </v-list-item>
+                      </nuxt-link>
                       <!-- profile  -->
                       <v-list-item class="dropdownList">
                         <v-list-item-icon>
@@ -245,8 +253,8 @@
               />
             </svg>
           </div>
-          <div class="cancelInput" @click="largeInput = false">cancel</div>
         </div>
+        <div class="cancelInput" @click="largeInput = false">cancel</div>
       </template>
     </aside>
   </v-app-bar>
@@ -417,10 +425,10 @@ li:has(.mobile) {
   gap: 15px;
   padding: 0 12px;
   input {
-    padding-right: 8%;
+    padding-right: 49px;
   }
   .searchIcon {
-    right: 11%;
+    right: 32px;
   }
 }
 .cancelInput {
@@ -428,5 +436,21 @@ li:has(.mobile) {
   font-weight: 600;
   cursor: pointer;
   text-transform: capitalize;
+}
+.signList {
+  padding: 12px 12px;
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  .item_title {
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: 600;
+    font-size: 2rem;
+    width: 50%;
+    border-radius: 4px;
+    padding: 12px;
+  }
 }
 </style>

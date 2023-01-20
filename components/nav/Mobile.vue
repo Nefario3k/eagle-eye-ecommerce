@@ -140,6 +140,22 @@
           </v-list-item>
         </v-list>
       </v-list-group>
+
+      <nuxt-link to="/login">
+        <v-list-item
+          class="dropdownList"
+          style="
+            padding-left: 12px;
+            background: var(--primary-color);
+            text-align: center;
+            margin-top: 15px;
+          "
+        >
+          <v-list-item-title class="item_title" style="color: #fff"
+            >Sign In</v-list-item-title
+          >
+        </v-list-item>
+      </nuxt-link>
     </v-list>
   </v-navigation-drawer>
 </template>

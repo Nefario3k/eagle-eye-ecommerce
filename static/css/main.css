@@ -54,6 +54,10 @@ select {
     caret-color: var(--secondary-color);
 }
 
+a {
+    text-decoration: none;
+}
+
 /* img,
 picture,
 svg,
@@ -362,11 +366,38 @@ aside.navWrapper {
 }
 
 .product_tab_items:hover {
-    transform: scale(0.8);
+    transform: scale(1.002);
     transition: all 0.2s ease-in-out;
 }
 
 .product_tab_items:hover .productWrapper {
-    border: 1px solid var(--primary-color) !important;
-    box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+    /* box-shadow: 0px 3px 1px -2px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%); */
+}
+
+.submit_wrapper {
+    padding-top: 28px;
+    text-align: center;
+}
+
+.submit_wrapper.submitted {
+    padding-bottom: 58px;
+}
+
+.submit_wrapper .Btn {
+    min-width: 50%;
+    height: 3.8rem;
+    background-color: var(--primary-color);
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    text-transform: initial;
+}
+
+.submit_wrapper .Btn span {
+    color: #fff;
+    font-weight: 500;
+    font-size: 1.4rem;
+}
+
+.submit_wrapper .Btn[disabled] {
+    background-color: var(--btn-disabled-color) !important;
 }
